@@ -1,15 +1,6 @@
-/*
-*
-*
-*       FILL IN EACH FUNCTIONAL TEST BELOW COMPLETELY
-*       -----[Keep the tests in the same order!]-----
-*       
-*/
-
-const { JSDOM } = require( "jsdom" );
-const { window } = new JSDOM( "" );
-const $ = require( "jquery" )( window );
-$.support.cors = true;
+const { JSDOM } = require("jsdom");
+const { window } = new JSDOM("");
+const $ = require("jquery")(window);
 const chaiHttp = require('chai-http');
 const chai = require('chai');
 const assert = chai.assert;
@@ -50,12 +41,12 @@ suite('Functional Tests', function() {
             done();
           });
       });
-      
+
     });
 
-    suite('GET /api/books => array of books', function(){
+    suite('GET /api/books => array of books', function() {
       // #3
-      test('Test GET /api/books',  function(done){
+      test('Test GET /api/books', function(done) {
         chai
           .request(server)
           .get('/api/books')
@@ -70,13 +61,13 @@ suite('Functional Tests', function() {
             }
             done();
           });
-      });        
+      });
     });
 
 
-    suite('GET /api/books/[id] => book object with [id]', function(){
+    suite('GET /api/books/[id] => book object with [id]', function() {
       // #4
-      test('Test GET /api/books/[id] with id not in db',  function(done){
+      test('Test GET /api/books/[id] with id not in db', function(done) {
         chai
           .request(server)
           .get('/api/books/12332c12e2cc4ed19cd5d6fc')
@@ -87,7 +78,7 @@ suite('Functional Tests', function() {
           });
       });
       // #5
-      test('Test GET /api/books/[id] with valid id in db',  async function(){
+      test('Test GET /api/books/[id] with valid id in db', async function() {
         // Create a new book
         const url = 'https://fcc-project-library.tynydeedev.repl.co/api/books';
         const sendData = {
@@ -108,13 +99,13 @@ suite('Functional Tests', function() {
             throw err;
           })
       });
-      
+
     });
 
 
-    suite('POST /api/books/[id] => add comment/expect book object with id', async function(){
+    suite('POST /api/books/[id] => add comment/expect book object with id', async function() {
       // #6
-      test('Test POST /api/books/[id] with comment', async function(){
+      test('Test POST /api/books/[id] with comment', async function() {
         // create a new book
         const url = 'https://fcc-project-library.tynydeedev.repl.co/api/books';
         const sendData = {
@@ -138,7 +129,7 @@ suite('Functional Tests', function() {
           });
       });
       // #7
-      test('Test POST /api/books/[id] without comment field', async function(){
+      test('Test POST /api/books/[id] without comment field', async function() {
         // create a new book
         const url = 'https://fcc-project-library.tynydeedev.repl.co/api/books';
         const sendData = {
@@ -157,7 +148,7 @@ suite('Functional Tests', function() {
           });
       });
       // #8
-      test('Test POST /api/books/[id] with comment, id not in db', function(done){
+      test('Test POST /api/books/[id] with comment, id not in db', function(done) {
         chai
           .request(server)
           .post('/api/books/12332c12e2cc4ed19cd5d6fc')
@@ -169,12 +160,12 @@ suite('Functional Tests', function() {
             done();
           });
       });
-      
+
     });
 
     suite('DELETE /api/books/[id] => delete book object id', function() {
       // #9
-      test('Test DELETE /api/books/[id] with valid id in db', async function(){
+      test('Test DELETE /api/books/[id] with valid id in db', async function() {
         // create new book
         const url = 'https://fcc-project-library.tynydeedev.repl.co/api/books';
         const sendData = {
@@ -193,7 +184,7 @@ suite('Functional Tests', function() {
           });
       });
       // #10
-      test('Test DELETE /api/books/[id] with  id not in db', function(done){
+      test('Test DELETE /api/books/[id] with  id not in db', function(done) {
         chai
           .request(server)
           .delete('/api/books/12332c12e2cc4ed19cd5d6fc')
