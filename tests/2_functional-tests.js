@@ -93,7 +93,7 @@ suite('Functional Tests', function() {
             assert.equal(res.status, 200);
             assert.equal(res.body._id, newBook._id);
             assert.equal(res.body.title, sendData.title);
-            assert.isArray(res.body.comment, 'comment should be an array');
+            assert.isArray(res.body.comments, 'comment should be an array');
           })
           .catch(function(err) {
             throw err;
@@ -121,8 +121,8 @@ suite('Functional Tests', function() {
             assert.equal(res.status, 200);
             assert.equal(res.body._id, newBook._id, 'the _id should match with the newly created one');
             assert.equal(res.body.title, 'A book to comment on', 'title should match');
-            assert.isArray(res.body.comment, 'comment should be an array')
-            assert.equal(res.body.comment[res.body.comment.length - 1], 'a new comment', 'the last comment should be the one added');
+            assert.isArray(res.body.comments, 'comment should be an array')
+            assert.equal(res.body.comments[res.body.comments.length - 1], 'a new comment', 'the last comment should be the one added');
           })
           .catch(function(err) {
             throw err;

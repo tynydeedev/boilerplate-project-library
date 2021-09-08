@@ -50,7 +50,7 @@ const addComment = (bookId, cmt, done) => {
   Book.findById(bookId, '-__v', (err, doc) => {
     if (err) return done(err);
     if (!doc) return done(null, null);
-    doc.comment.push(cmt);
+    doc.comments.push(cmt);
     doc.save((err, doc) => {
       if (err) return done(err);
       done(null, doc);
